@@ -6,7 +6,7 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true
 })
 export class SideDrawer {
-  @Prop({ reflect: true }) title: string = '';
+  @Prop({ reflect: true }) heading: string = '';
   @Prop({ reflect: true, mutable: true }) open: boolean;
 
   onCloseDrawer() {
@@ -18,7 +18,7 @@ export class SideDrawer {
     return (
       <aside>
         <header>
-          <h1>{this.title}</h1>
+          <h1>{this.heading}</h1>
           <button onClick={this.onCloseDrawer.bind(this)}>X</button>
         </header>
         <main>
