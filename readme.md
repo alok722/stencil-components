@@ -1,4 +1,4 @@
-# Welcome to Stencil Basics 🙏
+# Welcome to Stencil Components 🙏
 
 ## ❓ what it is
 
