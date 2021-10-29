@@ -6,37 +6,37 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface UcSideDrawer {
+    interface MySideDrawer {
         "heading": string;
         "open": () => Promise<void>;
         "opened": boolean;
     }
 }
 declare global {
-    interface HTMLUcSideDrawerElement extends Components.UcSideDrawer, HTMLStencilElement {
+    interface HTMLMySideDrawerElement extends Components.MySideDrawer, HTMLStencilElement {
     }
-    var HTMLUcSideDrawerElement: {
-        prototype: HTMLUcSideDrawerElement;
-        new (): HTMLUcSideDrawerElement;
+    var HTMLMySideDrawerElement: {
+        prototype: HTMLMySideDrawerElement;
+        new (): HTMLMySideDrawerElement;
     };
     interface HTMLElementTagNameMap {
-        "uc-side-drawer": HTMLUcSideDrawerElement;
+        "my-side-drawer": HTMLMySideDrawerElement;
     }
 }
 declare namespace LocalJSX {
-    interface UcSideDrawer {
+    interface MySideDrawer {
         "heading"?: string;
         "opened"?: boolean;
     }
     interface IntrinsicElements {
-        "uc-side-drawer": UcSideDrawer;
+        "my-side-drawer": MySideDrawer;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "uc-side-drawer": LocalJSX.UcSideDrawer & JSXBase.HTMLAttributes<HTMLUcSideDrawerElement>;
+            "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
         }
     }
 }
