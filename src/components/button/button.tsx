@@ -5,7 +5,7 @@ import { Component, h, Prop } from '@stencil/core';
   styleUrl: 'button.css',
   shadow: true,
 })
-export class ApolloButton {
+export class MyButton {
   @Prop() text: string;
   @Prop() appearance: string;
 

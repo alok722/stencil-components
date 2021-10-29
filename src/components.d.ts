@@ -10,6 +10,13 @@ export namespace Components {
         "appearance": string;
         "text": string;
     }
+    interface MyModal {
+        "appearance": string;
+        "buttons": string;
+        "closeIcon": string;
+        "header": string;
+        "isopen": boolean;
+    }
     interface MySideDrawer {
         "heading": string;
         "open": () => Promise<void>;
@@ -23,6 +30,12 @@ declare global {
         prototype: HTMLMyButtonElement;
         new (): HTMLMyButtonElement;
     };
+    interface HTMLMyModalElement extends Components.MyModal, HTMLStencilElement {
+    }
+    var HTMLMyModalElement: {
+        prototype: HTMLMyModalElement;
+        new (): HTMLMyModalElement;
+    };
     interface HTMLMySideDrawerElement extends Components.MySideDrawer, HTMLStencilElement {
     }
     var HTMLMySideDrawerElement: {
@@ -31,6 +44,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
+        "my-modal": HTMLMyModalElement;
         "my-side-drawer": HTMLMySideDrawerElement;
     }
 }
@@ -39,12 +53,21 @@ declare namespace LocalJSX {
         "appearance"?: string;
         "text"?: string;
     }
+    interface MyModal {
+        "appearance"?: string;
+        "buttons"?: string;
+        "closeIcon"?: string;
+        "header"?: string;
+        "isopen"?: boolean;
+        "onAction"?: (event: CustomEvent<any>) => void;
+    }
     interface MySideDrawer {
         "heading"?: string;
         "opened"?: boolean;
     }
     interface IntrinsicElements {
         "my-button": MyButton;
+        "my-modal": MyModal;
         "my-side-drawer": MySideDrawer;
     }
 }
@@ -53,6 +76,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
+            "my-modal": LocalJSX.MyModal & JSXBase.HTMLAttributes<HTMLMyModalElement>;
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
         }
     }
