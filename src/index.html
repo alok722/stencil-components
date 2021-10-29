@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
-    <style>
-      body {
-        font-family: sans-serif;
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+  <style>
+    #side-drawer-btn {
+      background: #0c89ff;
+      color: #fff;
+      border-radius: 4px;
+      border: none;
+      margin: 10px 12px;
+      height: 38px;
+      outline: none;
+      transition: 0.1s ease-in-out;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+    }
+
+    .side-nav ul {
+      list-style: none;
+    }
+
+    .side-nav li {
+      margin: 1rem 0;
+    }
+
+    .side-nav a {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="/build/stencil-basics.css" />
+  <script type="module" src="/build/stencil-basics.esm.js"></script>
+  <script nomodule src="/build/stencil-basics.js"></script>
+</head>
+
+<body>
+  <button id="side-drawer-btn">Open Side Menu</button>
+  <my-side-drawer heading="Main Menu">
+    <nav class="side-nav">
+      <ul>
+        <li><a href="/">A Link</a></li>
+        <li><a href="/">Another Link</a></li>
+        <li><a href="/">A third Link</a></li>
+      </ul>
+    </nav>
+  </my-side-drawer>
+
+  <!-- Buttons -->
+  <div class="container">
+    <div class="row">
+      <h3>Buttons</h3>
+    </div>
+    <div class="row space-between">
+      <my-button id="primary" text="Start Stream" appearance="primary"></my-button>
+      <my-button text="Send" appearance="secondary"></my-button>
+      <my-button text="Record" appearance="tertiary"></my-button>
+      <my-button text="End Stream" appearance="warning"></my-button>
+      <my-button text="Delete VOD" appearance="danger"></my-button>
+    </div>
+  </div>
+
+  <script>
+    const sideDrawerButton = document.querySelector('#side-drawer-btn');
+    const sideDrawer = document.querySelector('my-side-drawer');
+    sideDrawerButton.addEventListener('click', () => {
+      if (!sideDrawer.opened) {
+        console.log('Opening side drawer...');
+        // sideDrawer.open = true;
+        sideDrawer.open();
       }
+    });
+    setTimeout(() => {
+      // sideDrawer.title = 'It changed!';
+      // sideDrawer.setAttribute('title', 'It changed via Attribute');
+    }, 3000);
+  </script>
+</body>
 
-      .side-nav ul {
-        list-style: none;
-      }
-
-      .side-nav li {
-        margin: 1rem 0;
-      }
-
-      .side-nav a {
-        text-decoration: none;
-        color: black;
-      }
-    </style>
-
-    <script type="module" src="/build/stencil-basics.esm.js"></script>
-    <script nomodule src="/build/stencil-basics.js"></script>
-  </head>
-  <body>
-    <button id="side-drawer-btn">Open Side Menu</button>
-    <my-side-drawer heading="Main Menu">
-      <nav class="side-nav">
-        <ul>
-          <li><a href="/">A Link</a></li>
-          <li><a href="/">Another Link</a></li>
-          <li><a href="/">A third Link</a></li>
-        </ul>
-      </nav>
-    </my-side-drawer>
-
-    <script>
-      const sideDrawerButton = document.querySelector('#side-drawer-btn');
-      const sideDrawer = document.querySelector('my-side-drawer');
-      sideDrawerButton.addEventListener('click', () => {
-        if (!sideDrawer.opened) {
-          console.log('Opening side drawer...');
-          // sideDrawer.open = true;
-          sideDrawer.open();
-        }
-      });
-      setTimeout(() => {
-        // sideDrawer.title = 'It changed!';
-        // sideDrawer.setAttribute('title', 'It changed via Attribute');
-      }, 3000);
-    </script>
-  </body>
 </html>

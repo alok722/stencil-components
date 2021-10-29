@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MyButton {
+        "appearance": string;
+        "text": string;
+    }
     interface MySideDrawer {
         "heading": string;
         "open": () => Promise<void>;
@@ -13,6 +17,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
+    }
+    var HTMLMyButtonElement: {
+        prototype: HTMLMyButtonElement;
+        new (): HTMLMyButtonElement;
+    };
     interface HTMLMySideDrawerElement extends Components.MySideDrawer, HTMLStencilElement {
     }
     var HTMLMySideDrawerElement: {
@@ -20,15 +30,21 @@ declare global {
         new (): HTMLMySideDrawerElement;
     };
     interface HTMLElementTagNameMap {
+        "my-button": HTMLMyButtonElement;
         "my-side-drawer": HTMLMySideDrawerElement;
     }
 }
 declare namespace LocalJSX {
+    interface MyButton {
+        "appearance"?: string;
+        "text"?: string;
+    }
     interface MySideDrawer {
         "heading"?: string;
         "opened"?: boolean;
     }
     interface IntrinsicElements {
+        "my-button": MyButton;
         "my-side-drawer": MySideDrawer;
     }
 }
@@ -36,6 +52,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
             "my-side-drawer": LocalJSX.MySideDrawer & JSXBase.HTMLAttributes<HTMLMySideDrawerElement>;
         }
     }
